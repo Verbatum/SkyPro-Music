@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import '../../styles/global.css';
-import styles from './switchTheme.module.css';
+import '../../styles/global.js';
+import * as S from './styles';
 
 export function SwitchTheme() {
   const [currentTheme, setCurrentTheme] = useState('dark');
@@ -17,7 +17,7 @@ export function SwitchTheme() {
       setCurrentTheme('dark');
     }
   }
-  
+
   useEffect(() => {
     if (localStorage.getItem('theme') === 'light') {
       document.documentElement.setAttribute('data-theme', 'light');
@@ -29,19 +29,18 @@ export function SwitchTheme() {
   }, []);
 
   return (
-    <label>
-      <input
-        className={styles.switcher}
+    <S.SwitcherLabel>
+      <S.Switcher
         type='checkbox'
         id='switcher'
         aria-label='Переключить на дневную / ночную тему'
         checked={currentTheme === 'dark'}
         onChange={changeTheme}
       />
-      <label htmlFor='switcher'>
-        <div className={styles.switcher__block}>
+      <S.SwitcherSwitcherLabel htmlFor='switcher'>
+        <S.SwitcherBlock>
           {currentTheme === 'dark' ? (
-            <svg className={styles.switcher_switcher}
+            <S.SwitcherSwitcher
               xmlns='http://www.w3.org/2000/svg'
               width='40'
               height='40'
@@ -53,9 +52,9 @@ export function SwitchTheme() {
                 fill='white'
               />
               <circle cx='19.5576' cy='20.2549' r='19' stroke='white' />
-            </svg>
+            </S.SwitcherSwitcher>
           ) : (
-            <svg className={styles.switcher_switcher}
+            <S.SwitcherSwitcher
               xmlns='http://www.w3.org/2000/svg'
               width='40'
               height='40'
@@ -99,10 +98,10 @@ export function SwitchTheme() {
                 fill='black'
               />
               <circle cx='19.5576' cy='20.375' r='19' stroke='black' />
-            </svg>
+            </S.SwitcherSwitcher>
           )}
-        </div>
-      </label>
-    </label>
+        </S.SwitcherBlock>
+      </S.SwitcherSwitcherLabel>
+    </S.SwitcherLabel>
   );
 }

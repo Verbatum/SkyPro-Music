@@ -1,4 +1,6 @@
-@import url('./var.css');
+import { createGlobalStyle } from 'styled-components';
+
+export const GlobalStyle = createGlobalStyle`
 
 * {
   margin: 0;
@@ -40,21 +42,4 @@ body {
   font-family: StratosSkyeng, sans-serif;
   color: var(--main-text);
   transition: color 0.5s ease;
-}
-
-.wrapper {
-  width: 100%;
-  min-height: 100%;
-  overflow: hidden;
-  background-color: #383838;
-  transition: background-color 0.5s ease;
-}
-
-.container {
-  max-width: 1920px;
-  /* height: 100vh; */
-  margin: 0 auto;
-  position: relative;
-  background-color: var(--container);
-  transition: background-color 0.5s ease;
-}
+}`
