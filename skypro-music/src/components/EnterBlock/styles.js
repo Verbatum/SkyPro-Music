@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
 
 export const ContainerEnter = styled.div`
   max-width: 100%;
-  height: 100vh;
+
   margin: 0 auto;
   position: relative;
   background-color: rgb(0 0 0 / 85%);
@@ -36,9 +36,9 @@ export const ModalFormLogin = styled.form`
   align-items: center;
 `;
 
-export const ModalFormLoginLink = styled.a``
+export const ModalFormLoginLink = styled.a``;
 
-export const ModalFormLoginImg = styled.img``
+export const ModalFormLoginImg = styled.img``;
 
 export const ModalFormLoginInput = styled.div`
   width: 278px;
@@ -77,9 +77,8 @@ const BtnMixin = css`
   cursor: pointer;
 `;
 
-
 export const ModalButtonEnter = styled.button`
-${BtnMixin};
+  ${BtnMixin};
   background-color: #580ea2;
   height: 52px;
   color: #fff;
@@ -94,7 +93,7 @@ ${BtnMixin};
 `;
 
 export const ModalBtnSignup = styled.button`
-${BtnMixin};
+  ${BtnMixin};
   height: 52px;
   border: 1px solid #d0cece;
   background-color: ${({ $status }) => ($status ? '#580ea2' : '#fff')};
