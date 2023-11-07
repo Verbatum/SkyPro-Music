@@ -1,4 +1,4 @@
-import * as S from './styles';
+import * as S from './styles'
 
 export function Search() {
   return (
@@ -35,7 +35,11 @@ export function Search() {
           </S.IconSearchHandle>
         </S.Handle>
       </S.Glass>
-      <S.SearchText type='search' placeholder='Поиск' name='search' />
+      <S.SearchText
+        type='search'
+        placeholder='Поиск'
+        name='search'
+      />
     </S.CenterblockSearch>
   );
 }

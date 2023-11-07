@@ -5,7 +5,7 @@ import { Footer } from './components/FooterBlock/Footer';
 import { Enter } from './components/EnterBlock/Enter';
 import { GlobalStyle } from './styles/global';
 import { setTheme } from './utils/theme';
-import * as S from './styles/styles';
+import * as S from './styles/styles'
 
 setTheme();
 

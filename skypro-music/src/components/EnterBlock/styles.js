@@ -36,9 +36,9 @@ export const ModalFormLogin = styled.form`
   align-items: center;
 `;
 
-export const ModalFormLoginLink = styled.a``;
+export const ModalFormLoginLink = styled.a``
 
-export const ModalFormLoginImg = styled.img``;
+export const ModalFormLoginImg = styled.img``
 
 export const ModalFormLoginInput = styled.div`
   width: 278px;
@@ -77,8 +77,9 @@ const BtnMixin = css`
   cursor: pointer;
 `;
 
+
 export const ModalButtonEnter = styled.button`
-  ${BtnMixin};
+${BtnMixin};
   background-color: #580ea2;
   height: 52px;
   color: #fff;
@@ -93,7 +94,7 @@ export const ModalButtonEnter = styled.button`
 `;
 
 export const ModalBtnSignup = styled.button`
-  ${BtnMixin};
+${BtnMixin};
   height: 52px;
   border: 1px solid #d0cece;
   background-color: ${({ $status }) => ($status ? '#580ea2' : '#fff')};

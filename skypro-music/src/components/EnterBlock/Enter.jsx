@@ -40,9 +40,7 @@ export function Enter() {
               )}
             </S.ModalFormLoginInput>
             <S.ModalFormLoginButtons>
-              {status ? (
-                ''
-              ) : (
+              {status ? '' : (
                 <S.ModalButtonEnter onClick={showPlayer}>
                   Войти
                 </S.ModalButtonEnter>

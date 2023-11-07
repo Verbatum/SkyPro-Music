@@ -154,9 +154,9 @@ export const FilterListMenu = styled.ul`
   height: 237px;
 `;
 
-export const FilterListMenuItem = styled.li``;
+export const FilterListMenuItem = styled.li``
 
-export const FilterListMenuLink = styled.a``;
+export const FilterListMenuLink = styled.a``
 
 export const FilterListMenuYear = styled.ul`
   ${FilterListMixin};
