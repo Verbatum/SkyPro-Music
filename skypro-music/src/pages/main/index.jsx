@@ -1,30 +1,39 @@
-import { useState, useEffect } from 'react';
-import { NavTrackSidebar } from '../../components/NavTrackSidebarBlock';
-import { Player } from '../../components/PlayerBlock';
-import { Footer } from '../../components/FooterBlock';
+import { NavTrackSidebar } from '../../components/NavTrackSidebar';
+import { Player } from '../../components/Player';
+import { Footer } from '../../components/Footer';
 import * as S from './styles';
 
-export const Main = ({ music, getTracksError }) => {
-  const [isLoading, setIsLoading] = useState(false);
+export const Main = ({
+  isLoading,
+  music,
+  error,
+  isPlaying,
+  setIsPlaying,
+  currentTrack,
+  setCurrentTrack,
+}) => {
 
-  useEffect(() => {
-    if (!isLoading) {
-      const timeout = setTimeout(() => {
-        setIsLoading(true);
-      }, 2000);
-
-      return () => clearTimeout(timeout);
-    }
-  }, [isLoading]);
   return (
     <S.Wrapper>
       <S.Container>
         <NavTrackSidebar
           isLoading={isLoading}
           music={music}
-          getTracksError={getTracksError}
+          isPlaying={setIsPlaying}
+          setIsPlaying={setIsPlaying}
+          error={error}
+          currentTrack={currentTrack}
+          setCurrentTrack={setCurrentTrack}
         />
-        <Player isLoading={isLoading} />
+        {isPlaying && (
+          <Player
+            isLoading={isLoading}
+            isPlaying={setIsPlaying}
+            setIsPlaying={setIsPlaying}
+            currentTrack={currentTrack}
+            setCurrentTrack={setCurrentTrack}
+          />
+        )}
         <Footer />
       </S.Container>
     </S.Wrapper>

@@ -9,16 +9,22 @@ setTheme();
 function App() {
   const initialUserState = localStorage.getItem('user') === 'true';
   const [user, setUser] = useState(initialUserState);
+  const [isLoading, setIsLoading] = useState(false);
   const [music, setMusic] = useState([]);
-  const [getTracksError, setGetTracksError] = useState(null);
+  const [error, setError] = useState(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentTrack, setCurrentTrack] = useState(null);
 
   useEffect(() => {
     async function fetchTracks() {
       try {
         const tracks = await getAllTracks();
         setMusic(tracks);
+        setIsLoading(true);
+        setError(false);
       } catch (error) {
-        setGetTracksError('Не удалось загрузить плейлист, попробуйте позже');
+        setIsLoading(true);
+        setError(error.message);
       }
     }
     fetchTracks();
@@ -34,9 +40,14 @@ function App() {
       <GlobalStyle />
       <AppRoutes
         user={user}
+        isLoading={isLoading}
         music={music}
+        isPlaying={isPlaying}
+        setIsPlaying={setIsPlaying}
+        currentTrack={currentTrack}
+        setCurrentTrack={setCurrentTrack}
         onAuthButtonClick={handleLogin}
-        getTracksError={getTracksError}
+        error={error}
       />
     </>
   );
