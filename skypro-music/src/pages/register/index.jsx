@@ -1,20 +1,6 @@
-import React, { useState, useEffect } from 'react';
 import * as S from './styles';
 
-export function Enter() {
-  const [status, setStatus] = useState(localStorage.getItem('status') || false);
-
-  function changeStatus() {
-    setStatus(true);
-  }
-
-  function showPlayer() {
-    alert('Вы вошли');
-  }
-
-  useEffect(() => {
-    localStorage.setItem('status', status);
-  }, [status]);
+export function Register() {
 
   return (
     <S.Wrapper>
@@ -31,21 +17,14 @@ export function Enter() {
                 name='password'
                 placeholder='Пароль'
               />
-              {status && (
                 <S.ModalInputConfirmPassword
                   type='password'
                   name='password'
                   placeholder='Повторите пароль'
                 />
-              )}
             </S.ModalFormLoginInput>
             <S.ModalFormLoginButtons>
-              {status ? '' : (
-                <S.ModalButtonEnter onClick={showPlayer}>
-                  Войти
-                </S.ModalButtonEnter>
-              )}
-              <S.ModalBtnSignup onClick={changeStatus} $status={status}>
+              <S.ModalBtnSignup>
                 Зарегистрироваться
               </S.ModalBtnSignup>
             </S.ModalFormLoginButtons>

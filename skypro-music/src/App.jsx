@@ -1,38 +1,43 @@
 import { useState, useEffect } from 'react';
-import { Main } from './components/MainBlock/Main';
-import { Player } from './components/PlayerBlock/Player';
-import { Footer } from './components/FooterBlock/Footer';
-import { Enter } from './components/EnterBlock/Enter';
-import { GlobalStyle } from './styles/global';
+import { AppRoutes } from './routes';
 import { setTheme } from './utils/theme';
-import * as S from './styles/styles'
+import { GlobalStyle } from './styles/global';
+import { getAllTracks } from './api';
 
 setTheme();
 
 function App() {
-  const [isLoading, setIsLoading] = useState(false);
+  const initialUserState = localStorage.getItem('user') === 'true';
+  const [user, setUser] = useState(initialUserState);
+  const [music, setMusic] = useState([]);
+  const [getTracksError, setGetTracksError] = useState(null);
 
   useEffect(() => {
-    if (!isLoading) {
-      const timeout = setTimeout(() => {
-        setIsLoading(true);
-      }, 5000);
-
-      return () => clearTimeout(timeout); // Очищаю перед размонтом
+    async function fetchTracks() {
+      try {
+        const tracks = await getAllTracks();
+        setMusic(tracks);
+      } catch (error) {
+        setGetTracksError('Не удалось загрузить плейлист, попробуйте позже');
+      }
     }
-  }, [isLoading]);
+    fetchTracks();
+  }, []);
+
+  const handleLogin = () => {
+    localStorage.setItem('user', 'true');
+    setUser(true);
+  };
 
   return (
     <>
       <GlobalStyle />
-      <S.Wrapper>
-        <Enter />
-        <S.Container>
-          <Main isLoading={isLoading} setIsLoading={setIsLoading} />
-          <Player isLoading={isLoading} setIsLoading={setIsLoading} />
-          <Footer />
-        </S.Container>
-      </S.Wrapper>
+      <AppRoutes
+        user={user}
+        music={music}
+        onAuthButtonClick={handleLogin}
+        getTracksError={getTracksError}
+      />
     </>
   );
 }

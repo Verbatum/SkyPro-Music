@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-export const CenterblockFilter = styled.div`
+export const CenterBlockFilter = styled.div`
   display: -webkit-box;
   display: flex;
   -webkit-box-orient: horizontal;
@@ -131,7 +131,7 @@ const FilterListMixin = css`
   }
   a:active,
   a:hover {
-    color: var(--list-menu);
+    color: #b672ff;
     text-decoration: underline;
     transition: color 0.3s ease;
   }
